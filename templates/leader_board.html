@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leaderboard</title>
+	<style type="text/css">
+	body{        
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+    .container{
+        width: 80%;
+        margin: 0 auto; /* Center the DIV horizontally */
+    }
+    .fixed-header, .fixed-footer{
+        width: 100%;
+        position: fixed;        
+        background: #333;
+        padding: 10px 0;
+        color: #fff;
+    }
+    .fixed-header{
+        top: 0;
+        left: 0;
+    }
+    .fixed-footer{
+        bottom: 0;
+    }  
+    /* Some more styles to beutify this example */
+    nav a{
+        color: #fff;
+        text-decoration: none;
+        padding: 7px 25px;
+        display: inline-block;
+    }
+    .container p{
+        line-height: 200px; /* Create scrollbar to test positioning */
+    }
+
+    table {
+	    border-collapse: collapse;
+	  }
+	  th, td {
+	    border: 1px solid #ccc;
+	    padding: 10px;
+	    text-align: left;
+	  }
+
+		
+	  tbody > tr:first-child{
+	  	background: #e0eafc;
+		background: -webkit-linear-gradient(to top, #2c3e50, #000000);
+		background: linear-gradient(to top, #2c3e50, #000000);
+		color: white;
+		font-weight: bold;
+	  }
+
+	  tr:nth-child(even) {
+	    background-color: #eee;
+	  }
+	  tr:nth-child(odd) {
+	    background-color: #fff;
+	  } 
+
+	  .add-stock-button{
+	  	padding: 15px;
+	  	background-color: #222;
+	  	color: #fff;
+	  	border-radius: 10px;
+	  	font-size: 1.2rem;
+	  }
+	</style>
+</head>
+<body>
+	<div class="fixed-header">
+        <div class="container">
+            <nav>
+                <a href="{{url_for('home')}}">Stock Investing Game</a>
+                <a href="{{url_for('logout')}}">Logout</a>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+    	logged in as: <b>{{current_user.username}}</b> <br>
+Balance: ${{current_user.balance / 100}} <br>
+	<br><br>
+	{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p> {{ message }} </p><br><br>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+	<h1>The leader board as of {{today}} </h1><br>
+
+	<table cellpadding="4" cellspacing="3" style="margin-top: 15px;">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Username</th>
+				<th>Balance ($)</th>
+				<th>Total Net worth ($)</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users | sort(attribute='networth', reverse=True) %}
+				<tr>
+					<td style="font-weight:bold;">{{ loop.index }}</td>
+					<td>{{user.username}}</td>
+					<td>${{user.balance / 100}}</td>
+					<td>{{user.networth / 100}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+ </div>
+</body>
+</html>

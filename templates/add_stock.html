@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stock Game - Buy Stocks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+</head>
+<body>
+<section class="hero is-dark">
+  <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <h2 class="subtitle">Playing as {{current_user.username}}</h3>
+          </a>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Stock Investing Game
+      </h1>
+      <h2 class="subtitle">
+        Add Stock <br>
+        Balance:  ${{current_user.balance / 100}}<br>
+      </h2>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <nav class="tabs is-boxed">
+      <div class="container">
+        <ul>
+          <li class="navbar-item">
+            <a href="{{url_for('home')}}">Home</a>
+          </li>
+          <li>
+            <a class="navbar-item is-active" href="{{url_for('logout')}}">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</section>
+
+<div class="container">
+	{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <article class="message is-primary">
+              <div class="message-header">
+                <p> {{ message }} </p>
+                <button class="delete" aria-label="delete"></button>
+              </div>
+            </article>            
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<div class="tile is-ancestor">
+  <div class="tile is-parent is-8">
+     <form method="POST" action="{{url_for('add_stock')}}">
+        <div class="field">
+          <label class="label">Stock Symbol</label>
+          <div class="control">
+            <div class="select">
+                <select name="symbol" id="symbol" onchange="displayCPS()">
+                  <option>Choose Stock...</option>
+                  {% for symbol in stocks_list %}
+                  <option value="{{ symbol }}">{{ symbol }}</option>
+                  {% endfor %}
+                </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Number of Shares</label>
+          <div class="control">
+            <input type="number" class="input" min="1" name="no_of_shares" id="no_of_shares" placeholder="Number of shares" oninput="displayTotal();">
+          </div>
+        </div>
+
+        <div class="field has-addons">
+            <label class="label">Cost per share</label>
+          <div class="control">
+            <input type="number" class="input" id="cps" disabled="">
+          </div>
+          <div class="control">
+              <a class="button is-static">cents</a>
+          </div>
+        </div>
+
+        <div class="field">
+            <h4 class="subtitle">Total: $<span id="total">0.00</span></h4>
+        </div>
+        
+        <div class="field">
+          <div class="control">
+            <input type="submit" value="Submit" class="button is-link">
+          </div>
+        </div>
+      </form>
+    </div>
+  <div class="tile is-parent">
+    <article class="tile is-child box">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Name</th>
+          <th>Price:(c)</th>
+          <th>Price:($)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stock in stocks  %}
+          <tr>
+            <td id="{{ stock.symbol }}">{{ stock.symbol }}</td>
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.price }}</td>
+            <td>{{ stock.price|int / 100 }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+
+    </article>
+  </div>
+</div>
+ </div>
+ <script>
+function displayCPS() {
+  var stock_symbol = document.getElementById("symbol").value;
+  // get the stock_price by getting the next 2 elements from the table row...pretty sneaky i know
+  var stock_price = document.getElementById(stock_symbol).nextElementSibling.nextElementSibling.innerHTML;
+  // display the price on the input
+  document.getElementById("cps").value = stock_price;
+}
+
+function displayTotal(){
+  var cps = document.getElementById("cps").value;
+  var num_shares = document.getElementById("no_of_shares").value;
+  var total = (cps * num_shares) / 100;
+  document.getElementById("total").innerHTML = total;
+}
+</script>
+</body>
+</html>

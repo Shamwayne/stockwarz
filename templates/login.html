@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login to the stock game</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0">
+    <meta name="description" content="Learn Stock Trading on the ZSE whilst competing to get the highest score. who will win!">
+  	<meta name="keywords" content="ZSE,Stock Trading,StockWarz">
+	<style>
+		body{
+			background-color: #eee;
+		}
+
+		.card{
+			margin-top: 20px;
+			padding-top: 10px;
+			box-sizing: content-box;
+			background: #fff;
+			width: 90%;
+			box-shadow: 2px 2px 3px rgba(100, 100, 100, 0.35);
+			padding: 2px;
+		}
+		
+		.card-dark{
+			background: #111;
+			color: white;
+		}
+
+		input{
+			font-size: 1.3rem;
+		}
+
+		.button{
+			background: #111;
+			color: #fff;
+			box-shadow: 2px 2px 3px rgba(100, 100, 100, 0.35);
+			padding: 5px;
+			border: none;
+			font-size: 1.3rem;
+		}
+	</style>
+</head>
+<body>
+	{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p class="card card-dark"> {{ message }} </p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+	<form method="POST" action="{{url_for('login')}}" class="card">
+		<input type="text" name="username" placeholder="Enter username"> <br><br>
+		<input type="password" name="password" placeholder="Enter password"> <br><br>
+		<input type="submit" value="Login" class="button"> 
+		<a href="{{url_for('register')}}" class="button">Register</a>
+	</form>
+</body>
+</html>

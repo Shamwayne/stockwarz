@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stock Game - Adding dividents</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+</head>
+<body>
+  <section class="hero is-dark">
+    <div class="hero-head">
+    <nav class="navbar">
+      <div class="container">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <h2 class="subtitle">Playing as {{current_user.username}}</h3>
+          </a>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            <a class="navbar-item is-active" href="{{url_for('logout')}}">
+              Logout
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    </div>
+    <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Stock Investing Game
+      </h1>
+      <h2 class="subtitle">
+        Add Stock <br>
+        Balance:  ${{current_user.balance / 100}}<br>
+      </h2>
+    </div>
+    </div>
+    <div class="hero-foot">
+    <nav class="tabs is-boxed">
+      <div class="container">
+        <ul>
+          <li class="is-active">
+            <a href="{{url_for('home')}}">Back</a>
+          </li>
+        </ul>
+    </div>
+  </section>
+  <div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <article class="message is-primary">
+              <div class="message-header">
+                <p> {{ message }} </p>
+                <button class="delete" aria-label="delete"></button>
+              </div>
+            </article>            
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<br><br><br>
+<div class="tile is-ancestor">
+  <div class="tile is-parent is-8">
+	<form method="POST" action="{{url_for('add_divident', stockid=stock.id)}}">
+        <div class="field">
+          <label class="label">Stock Symbol</label>
+          <div class="control">
+		    <input type="text" name="symbol" value="{{stock.symbol}}" disabled="disabled" class="input">
+          </div>
+        </div>
+
+        <div class="field has-addons">
+            <label class="label">Amount per share</label>
+            <div class="control" style="padding-left:5px;">
+                <input type="number" min="1"  name="price_per_share" placeholder="Divident per share" class="input">
+            </div>         
+        </div>
+		
+		<input type="submit" value="Submit" class="button">
+	</form>
+  </div>
+	
+  <div class="tile is-parent">
+    <article class="tile is-child box">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Name</th>
+          <th>Price (cents)</th>
+          <th>Price (dollars)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stock in stocks %}
+          <tr>
+            <td>{{ stock.symbol }}</td>
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.price }}</td>
+            <td>{{ stock.price|int / 100 }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </article>
+  </div>
+ </div>
+</div>
+
+</body>
+</html>

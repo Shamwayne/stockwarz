@@ -1,0 +1,277 @@
+[
+    {
+        "symbol": "AFDS.zw",
+        "name": "Afdis",
+        "price": "170.00"
+    },
+    {
+        "symbol": "ARIS.zw",
+        "name": "Ariston",
+        "price": "3.20"
+    },
+    {
+        "symbol": "ARTD.zw",
+        "name": "ART Holdings",
+        "price": "9.00"
+    },
+    {
+        "symbol": "ASUN.zw",
+        "name": "Africansun",
+        "price": "15.00"
+    },
+    {
+        "symbol": "AXIA.zw",
+        "name": "Axia",
+        "price": "37.00"
+    },
+    {
+        "symbol": "BAT.zw",
+        "name": "BAT",
+        "price": "3,000.00"
+    },
+    {
+        "symbol": "BIND.zw",
+        "name": "Bindura",
+        "price": "7.04"
+    },
+    {
+        "symbol": "CAFCA.zw",
+        "name": "CAFCA",
+        "price": "103.25"
+    },
+    {
+        "symbol": "CBZ.zw",
+        "name": "CBZ",
+        "price": "15.00"
+    },
+    {
+        "symbol": "CSZL.zw",
+        "name": "Cassava",
+        "price": "110.02"
+    },
+    {
+        "symbol": "DAWN.zw",
+        "name": "Dawn",
+        "price": "2.50"
+    },
+    {
+        "symbol": "DLTA.zw",
+        "name": "Delta",
+        "price": "232.00"
+    },
+    {
+        "symbol": "DZL.zw",
+        "name": "Dairibord",
+        "price": "14.00"
+    },
+    {
+        "symbol": "ECO.zw",
+        "name": "Econet",
+        "price": "110.17"
+    },
+    {
+        "symbol": "EDGR.zw",
+        "name": "Edgars",
+        "price": "10.15"
+    },
+    {
+        "symbol": "FBC.zw",
+        "name": "FBC",
+        "price": "35.00"
+    },
+    {
+        "symbol": "FCA.zw",
+        "name": "Barclays",
+        "price": "5.62"
+    },
+    {
+        "symbol": "FIDL.zw",
+        "name": "Fidelity",
+        "price": "11.00"
+    },
+    {
+        "symbol": "FMHL.zw",
+        "name": "FMHL",
+        "price": "12.80"
+    },
+    {
+        "symbol": "FMP.zw",
+        "name": "FMP",
+        "price": "7.40"
+    },
+    {
+        "symbol": "GBFS.zw",
+        "name": "GetBucks",
+        "price": "8.00"
+    },
+    {
+        "symbol": "GBH.zw",
+        "name": "General Beltings",
+        "price": "1.80"
+    },
+    {
+        "symbol": "HIPO.zw",
+        "name": "Hippo",
+        "price": "155.00"
+    },
+    {
+        "symbol": "INN.zw",
+        "name": "Innscor",
+        "price": "137.00"
+    },
+    {
+        "symbol": "LACZ.zw",
+        "name": "Lafarge",
+        "price": "133.00"
+    },
+    {
+        "symbol": "MASH.zw",
+        "name": "MASH",
+        "price": "3.23"
+    },
+    {
+        "symbol": "MEIK.zw",
+        "name": "Meikles",
+        "price": "49.12"
+    },
+    {
+        "symbol": "MMDZ.zw",
+        "name": "Medtech",
+        "price": "0.06"
+    },
+    {
+        "symbol": "MSHL.zw",
+        "name": "Masimba",
+        "price": "8.10"
+    },
+    {
+        "symbol": "NMB.zw",
+        "name": "NMBZ",
+        "price": "24.00"
+    },
+    {
+        "symbol": "NPKZ.zw",
+        "name": "Nampak",
+        "price": "29.30"
+    },
+    {
+        "symbol": "NTFD.zw",
+        "name": "Natfoods",
+        "price": "700.00"
+    },
+    {
+        "symbol": "NTS.zw",
+        "name": "NTS",
+        "price": "2.16"
+    },
+    {
+        "symbol": "OKZ.zw",
+        "name": "OK Zim",
+        "price": "25.00"
+    },
+    {
+        "symbol": "OMU.zw",
+        "name": "Old Mutual",
+        "price": "724.74"
+    },
+    {
+        "symbol": "PHL.zw",
+        "name": "Padenga",
+        "price": "98.00"
+    },
+    {
+        "symbol": "PPC.zw",
+        "name": "PPC",
+        "price": "165.00"
+    },
+    {
+        "symbol": "PROL.zw",
+        "name": "Proplastics",
+        "price": "21.00"
+    },
+    {
+        "symbol": "PWS.zw",
+        "name": "Powerspeed",
+        "price": "17.45"
+    },
+    {
+        "symbol": "RIOZ.zw",
+        "name": "RioZim",
+        "price": "180.00"
+    },
+    {
+        "symbol": "RTG.zw",
+        "name": "Rainbow",
+        "price": "2.42"
+    },
+    {
+        "symbol": "SACL.zw",
+        "name": "starafrica",
+        "price": "1.10"
+    },
+    {
+        "symbol": "SCIL.zw",
+        "name": "Seed Co",
+        "price": "130.00"
+    },
+    {
+        "symbol": "SEED.zw",
+        "name": "Seedco",
+        "price": "144.00"
+    },
+    {
+        "symbol": "SIM.zw",
+        "name": "Simbisa",
+        "price": "68.00"
+    },
+    {
+        "symbol": "TRUW.zw",
+        "name": "Truworths",
+        "price": "1.61"
+    },
+    {
+        "symbol": "TSL.zw",
+        "name": "TSL",
+        "price": "70.00"
+    },
+    {
+        "symbol": "TURN.zw",
+        "name": "Turnall",
+        "price": "5.50"
+    },
+    {
+        "symbol": "UNIF.zw",
+        "name": "Unifreight",
+        "price": "10.10"
+    },
+    {
+        "symbol": "WILD.zw",
+        "name": "Willdale",
+        "price": "1.90"
+    },
+    {
+        "symbol": "ZBFH.zw",
+        "name": "ZB Financial",
+        "price": "39.25"
+    },
+    {
+        "symbol": "ZIMP.zw",
+        "name": "Zimpapers",
+        "price": "7.90"
+    },
+    {
+        "symbol": "ZIMR.zw",
+        "name": "Zimre Holdings",
+        "price": "2.20"
+    },
+    {
+        "symbol": "ZIMW.zw",
+        "name": "Zimplow",
+        "price": "24.25"
+    },
+    {
+        "symbol": "ZPI.zw",
+        "name": "Zimre Property",
+        "price": "3.20"
+    }
+]

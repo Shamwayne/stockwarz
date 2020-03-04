@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stockwarz: Welcome to the financial battle!</title>
+	<meta name="viewport" content="width=device-width, maximum-scale=1.0">
+	<style type="text/css">
+	body{        
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+    .container{
+        width: 80%;
+        margin: 0 auto; /* Center the DIV horizontally */
+    }
+    .fixed-header, .fixed-footer{
+        width: 100%;
+        position: fixed;        
+        background: #333;
+        padding: 10px 0;
+        color: #fff;
+    }
+    .fixed-header{
+        top: 0;
+        left: 0;
+    }
+    .fixed-footer{
+        bottom: 0;
+    }  
+    /* Some more styles to beutify this example */
+    nav a{
+        color: #fff;
+        text-decoration: none;
+        padding: 7px 25px;
+        display: inline-block;
+    }
+    .container p{
+        line-height: 200px; /* Create scrollbar to test positioning */
+    }
+
+    table {
+	    border-collapse: collapse;
+	  }
+	  th, td {
+	    border: 1px solid #ccc;
+	    padding: 10px;
+	    text-align: left;
+	  }
+	  tr:nth-child(even) {
+	    background-color: #eee;
+	  }
+	  tr:nth-child(odd) {
+	    background-color: #fff;
+	  } 
+
+	  .add-stock-button{
+	  	padding: 15px;
+	  	background-color: #222;
+	  	color: #fff;
+	  	border-radius: 10px;
+	  	font-size: 1.2rem;
+	  }
+	</style>
+</head>
+<body>
+	<div class="fixed-header">
+        <div class="container">
+            <nav>
+                <a href="#">Stock Investing Game</a>
+                <a href="{{url_for('leader_board')}}">Leader board</a>
+                <a href="{{url_for('logout')}}">Logout</a>
+            </nav>
+        </div>
+    </div>
+    <div class="container">
+    	logged in as: <b>{{current_user.username}}</b> <br>
+Balance: ${{current_user.balance / 100}} <br>
+	<br><br>
+	{% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p> {{ message }} </p><br><br>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+	<h1>My Purchases </h1><br>
+	<a href="{{url_for('add_stock')}}" class="add-stock-button">Add stock </a>
+
+	<table cellpadding="4" cellspacing="3" style="margin-top: 15px;">
+		<thead>
+			<tr>
+				<th>Company Symbol</th>
+				<th>No. of shares available</th>
+				<th>Cost per share (in cents)</th>
+				<th>Current cost per share</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% if inventory | length == 0%}
+			<tr>
+				<td></td>
+				<td>No investments yet...</td>
+				<td></td>
+				<td></td>
+			</tr>
+			{% else %}
+			{% for share in inventory %}
+				<tr>
+					<td>{{share.symbol}}</td>
+					<td>{{share.no_of_shares}}</td>
+					<td>{{share.cost_per_share}}</td>
+					<td style="color:#225;">{{ share.symbol|stock_price }}</td>
+					<td><a href="{{url_for('sell_stock', stockid=share.id)}}">Sell</a></td>
+				</tr>
+			{% endfor %}
+			{% endif %}
+		</tbody>
+	</table>
+
+	<br><br>
+	<h1>My Sales</h1>
+	<table cellpadding="4" cellspacing="3">
+		<thead>
+			<tr>
+				<th>Company Symbol</th>
+				<th>No. of shares sold</th>
+				<th>Cost per share</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for share in my_sales %}
+				<tr>
+					<td>{{share.symbol}}</td>
+					<td>{{share.no_of_shares}}</td>
+					<td>{{share.cost_per_share}}</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+ </div>
+</body>
+</html>
